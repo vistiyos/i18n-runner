@@ -1,0 +1,11 @@
+{
+  "key1": "value1",
+  "key2": {
+    "nestedKey1": "nestedValue2",
+    "nestedKey2": {
+      "nestedKey3": "nestedValue3",
+      "nestedKey4": "nestedValue4"
+    },
+    "nestedKey5": "nestedValue5"
+  }
+}

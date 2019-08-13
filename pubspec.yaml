@@ -1,0 +1,25 @@
+name: i18_runner
+description: A starting point for Dart libraries or applications.
+# version: 1.0.0
+# homepage: https://www.example.com
+# author: Víctor <victorescobargonza@gmail.com>
+
+environment:
+  sdk: '>=2.2.0 <3.0.0'
+
+dependencies:
+  path: ^1.6.0
+  source_gen: ^0.9.4
+  build: ^1.1.4
+  analyzer: ^0.37.0
+  args: ^1.5.2
+  tuple: ^1.0.2
+
+
+dev_dependencies:
+  pedantic: ^1.7.0
+  logging: ^0.11.3
+  build_runner: ^1.4.0
+
+executables:
+    i18_runner: i18_runner
