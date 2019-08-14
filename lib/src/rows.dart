@@ -5,6 +5,8 @@ class Rows<T> {
 
   void forEach(void f(T element)) => _templates.forEach(f);
 
+  T operator [](int index) => _templates[index];
+
   bool get isEmpty => _templates.isEmpty;
 
   @override

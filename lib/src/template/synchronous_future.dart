@@ -6,6 +6,6 @@ class SynchronousFutureTemplate {
   @override
   String toString() => """
   case "$_locale":
-          return SynchronousFuture<WidgetsLocalizations>(const $_locale());
+          return SynchronousFuture<WidgetsLocalizations>($_locale());
   """;
 }

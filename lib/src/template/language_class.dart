@@ -1,24 +1,21 @@
 import 'package:i18_runner/src/language_string.dart';
-import 'package:i18_runner/src/language_string_getter.dart';
 import 'package:i18_runner/src/rows.dart';
 
 class LanguageClassTemplate {
   final String _locale;
   final Rows<LanguageString> _languageStrings;
-  final Rows<LanguageStringGetter> _languageStringsGetter;
 
-  LanguageClassTemplate(this._locale, this._languageStrings, this._languageStringsGetter);
+  LanguageClassTemplate(this._locale, this._languageStrings);
 
   @override
   String toString() => """
   class $_locale extends I18n {
-    const $_locale();
+    $_locale();
     
-    Map<String, String> languageStrings = {
+    @override
+    Map<String, String> getLanguageStrings() => {
       $_languageStrings
     };
-    
-    $_languageStringsGetter
   }
   """;
 }

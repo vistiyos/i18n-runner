@@ -10,13 +10,14 @@ class I18nTemplate {
   final Rows<LanguageClassTemplate> _languages = Rows();
   final Rows<SupportedLocalesTemplate> _supportedLocales = Rows();
   final Rows<SynchronousFutureTemplate> _synchronousFutures = Rows();
+  List<String> _locales;
 
   I18nTemplate(List<String> locales, LanguageStringMap strings) {
+    _locales = locales;
     locales.forEach((locale) {
       _languages.add(LanguageClassTemplate(
         locale,
         strings.getLanguageStrings(locale),
-        strings.getLanguageStringsGetter(locale),
       ));
       _supportedLocales.add(SupportedLocalesTemplate(locale));
       _synchronousFutures.add(SynchronousFutureTemplate(locale));
@@ -30,9 +31,12 @@ class I18nTemplate {
   import 'package:flutter/foundation.dart';
   import 'package:flutter/material.dart';
   
+  // ignore_for_file: camel_case_types
+  // ignore_for_file: non_constant_identifier_names
+  
   /// DO NOT MODIFY THIS FILE, CHANGES WILL BE OVERWRITTEN
   
-  class I18n implements WidgetsLocalizations {
+  abstract class I18n implements WidgetsLocalizations {
     const I18n();
   
     static const GeneratedLocalizationsDelegate delegate =
@@ -44,7 +48,16 @@ class I18nTemplate {
     @override
     TextDirection get textDirection => TextDirection.ltr;
     
+    /// Get language strings for the locale
+    Map<String,String> getLanguageStrings();
     
+    /// Get a translation by given [key]
+    /// If the translation does not exists, [key] will be returned
+    String getTranslation(String key) {
+      var languageStrings = getLanguageStrings();
+
+      return languageStrings.containsKey(key) ? languageStrings[key] : key;
+    }
   }
 
 $_languages
@@ -79,7 +92,7 @@ $_languages
       $_synchronousFutures
   
         default:
-          return SynchronousFuture<WidgetsLocalizations>(const I18n());
+          return SynchronousFuture<WidgetsLocalizations>(${_locales[0]}());
       }
     }
   
